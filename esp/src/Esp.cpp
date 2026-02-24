@@ -68,24 +68,23 @@ if (Serial2.available()) {
     
     Serial.println("From Arduino: " + msg);
     
+
+    // Publish to MQTT
+    unsigned long now = millis();
+    if (now - lastMsg > 5000) {
+      lastMsg = now;
+        //String msg = "Hello MQTT";
+        if (client.publish("esp/arduino", msg.c_str())) {
+          Serial.println("Message sent to MQTT");
+        } else {
+          Serial.println("Failed to send message");
+        }
+    }
     // Odpowiedz z nową linią na końcu
-    Serial2.println("Hello Arduino"); 
+    //Serial2.println("Hello Arduino"); 
 
     delay(2000);
 }
 
-    // Publish to MQTT
-    // unsigned long now = millis();
-    // if (now - lastMsg > 5000) {
-    //   lastMsg = now;
-    //     String msg = "Hello MQTT";
-    //     if (client.publish("esp/arduino", msg.c_str())) {
-    //       Serial.println("Message sent to MQTT");
-    //     } else {
-    //       Serial.println("Failed to send message");
-    //     }
-    // }
-
-    
-  }
+}
 
