@@ -1,0 +1,6 @@
+.pio/
+.vscode/
+.code-workspace
+*.pyc
+*.bin
+*.elf
