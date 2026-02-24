@@ -7,11 +7,11 @@
 #define TXD2 17
 
 // Wi-Fi credentials
-const char* ssid = "Hxf";
-const char* password = "hclw5858";
+const char* ssid = ""; //wifi ssid
+const char* password = ""; //wifi pass
 
 // MQTT broker IP
-const char* mqtt_server = "10.135.133.3";
+const char* mqtt_server = ""; //server ip
 
 WiFiClient espClient;
 PubSubClient client(espClient);
