@@ -28,6 +28,7 @@ void setup() {
 unsigned long lastTempRequest = 0;
 const unsigned long interval = 5000; 
 
+
 void loop() {
   
   int state = digitalRead(MoveSensor);
@@ -35,10 +36,10 @@ void loop() {
   //Serial.println(state); // Zobaczysz 0 lub 1
   if (state == HIGH) {
     digitalWrite(DiodePin, HIGH); // Turn on the diode
-    Serial.println("Movement detected!");
+    //Serial.println("Movement detected!");
   }else{
     digitalWrite(DiodePin, LOW); // Turn off the diode
-    Serial.println("No movement.");
+    //Serial.println("No movement.");
   }
   // Read message from ESP
   // if (espSerial.available()) {
@@ -52,7 +53,7 @@ void loop() {
     
     String payload = "T: " + String(t) + " H: " + String(h);
     espSerial.println(payload); // Wysyłka do ESP
-    
+    Serial.println("Sent to ESP: " + payload);
     lastTempRequest = millis(); 
   }
   // Serial.print("Temperature: ");
